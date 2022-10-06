@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
 import {Card, Space} from "antd";
 import {useDispatch, useSelector} from 'react-redux';
 import {catchPokemon, releasePokemon} from "../redux/actions";
 import Button from "antd/es/button";
 
-const PokemonInfo = (props) => {
+const PokemonInfo = () => {
 
     const dispatch = useDispatch();
     const pokemonID = useSelector(state => state.pokemons.cardID);
     const properties = useSelector(state => state.pokemons.pokemons[pokemonID - 1]);
 
-    console.log(props);
 
     return (
         <Space style={{
@@ -33,16 +32,12 @@ const PokemonInfo = (props) => {
                         <Button type={"dashed"} onClick={(e) => {
                             e.preventDefault();
                             dispatch(releasePokemon(pokemonID))
-                            properties.isCaught = !properties.isCaught;
-                            console.log(properties.isCaught);
                         }
                         }>Release</Button>
                         :
                         <Button type="primary" onClick={(e) => {
                             e.preventDefault();
                             dispatch(catchPokemon(pokemonID))
-                            console.log(properties.isCaught);
-                            properties.isCaught = !properties.isCaught;
                         }
                         }>Catch!</Button>}
                 </Card>

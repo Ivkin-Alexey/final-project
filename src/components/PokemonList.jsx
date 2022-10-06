@@ -15,8 +15,11 @@ function PokemonList() {
     useEffect(() => {
         if (isFetching) {
             dispatch(fetchPokemons(url));
+            console.log(pokemons);
         }
     }, [isFetching,dispatch,url]);
+
+
 
     useEffect(() => {
         const scrollHandler = (e) => {
@@ -35,19 +38,15 @@ function PokemonList() {
 
     return (
         <Space style={{marginTop: '64px', marginBottom: '64px', display: 'flex', justifyContent: 'center', alignItems: 'center'}} size={[50, 50]} wrap>
-            {pokemons.map((pokemon, index) => {
-                return <PokemonItem style={{height: '53px', width: '53px'}}
-                    id={index+1}
-                    name={pokemon.name}
-                    url={pokemon.url}
-                    imgURL={pokemon.imgURL}
-                    types={pokemon.types}
-                    abilities={pokemon.abilities}
-                    weight={pokemon.weight}
-                    isCaught={pokemon.isCaught}
-                    key={index+1}
+            {pokemons[0] ? pokemons.map((poke, index) => {
+                return <PokemonItem
+                    name={poke.name}
+                    imgURL={poke.imgURL}
+                    key={index}
+                    id={index + 1}
                 />
-            })}
+            }) : null
+            }
         </Space>
     )
 }

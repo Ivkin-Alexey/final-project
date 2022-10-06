@@ -15,8 +15,9 @@ export const pokemonsReducer = (state = initialState, action) => {
             return {
                 ...state, pokemons: state.pokemons.map((el,index) => {
                     if (index+1 === action.id) {
-                        el.isCaught = true
-                        el.date = action.date
+                        return Object.assign({}, el, {
+                            isCaught: true,
+                            date: action.date})
                     }
                     return el
                 })
@@ -25,8 +26,9 @@ export const pokemonsReducer = (state = initialState, action) => {
             return {
                 ...state, pokemons: state.pokemons.map((el,index) => {
                     if (index+1 === action.id) {
-                        el.isCaught = false
-                        el.date = action.date
+                        return Object.assign({}, el, {
+                            isCaught: false,
+                            date: action.date})
                     }
                     return el
                 })
