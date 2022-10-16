@@ -13,13 +13,14 @@ function PokemonList() {
     let url = useSelector(state => state.app.url)
 
     useEffect(() => {
+            dispatch(fetchPokemons(url));
+    }, []);
+
+    useEffect(() => {
         if (isFetching) {
             dispatch(fetchPokemons(url));
-            console.log(pokemons);
         }
     }, [isFetching,dispatch,url]);
-
-
 
     useEffect(() => {
         const scrollHandler = (e) => {
@@ -42,6 +43,8 @@ function PokemonList() {
                 return <PokemonItem
                     name={poke.name}
                     imgURL={poke.imgURL}
+                    isCaught={poke.isCaught}
+                    date={poke.date}
                     key={index}
                     id={index + 1}
                 />

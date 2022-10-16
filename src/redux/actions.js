@@ -1,7 +1,6 @@
 import {
     CATCH_POKEMON,
     FETCH_POKEMONS, RELEASE_POKEMON,
-    SET_CARD_ID,
     SET_NEXT_PAGE_URL,
     TOGGLE_FETCHING
 } from "./types";
@@ -51,12 +50,6 @@ export function catchPokemon(id) {
 export function releasePokemon(id) {
     return {
         type: RELEASE_POKEMON, id
-    }
-}
-
-export function setCardID(id) {
-    return {
-        type: SET_CARD_ID, id
     }
 }
 

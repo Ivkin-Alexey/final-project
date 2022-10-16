@@ -27,7 +27,7 @@ function App() {
                     <Routes>
                         <Route exact path="/" element={<PokemonList/>}/>
                         <Route exact path="/caughtPokemons" element={<CaughtPokemonList/>}/>
-                        <Route exact path="/info" element={<PokemonInfo/>}/>
+                        <Route exact path="/info/:id" element={<PokemonInfo/>}/>
                     </Routes>
             </Content>
         </Layout>

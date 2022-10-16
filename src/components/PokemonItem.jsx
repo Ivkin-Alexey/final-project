@@ -2,13 +2,12 @@ import React from "react"
 import Card from "antd/es/card";
 import Button from "antd/es/button";
 import {Link} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {catchPokemon, setCardID} from "../redux/actions";
+import {useDispatch} from "react-redux";
+import {catchPokemon, releasePokemon} from "../redux/actions";
 
 function PokemonItem(props) {
 
     const dispatch = useDispatch();
-    let caughtPokemons = useSelector(state => state.pokemons.caughtPokemons)
 
     function toUpperCase(str) {
         return str
@@ -18,7 +17,7 @@ function PokemonItem(props) {
     }
 
     return (
-        <Link to='/card' onClick={()=>dispatch(setCardID(props.id))}>
+        <Link to={`/info/${props.id}`} >
             <Card
                 hoverable
                 style={{width: 240, minHeight: '357px'}}
@@ -26,15 +25,15 @@ function PokemonItem(props) {
             >
                 <h4>{`ID ${props.id}, ${toUpperCase(props.name)}`}</h4>
                 <p>{props.date ? `Was caught on ${props.date}` : ''}</p>
-                {caughtPokemons.find(item=>item.id === props.id) ?
+                {props.isCaught ?
                     <Button type={"dashed"} onClick={(e) => {
                         e.preventDefault();
-                        dispatch(catchPokemon(props))}
+                        dispatch(releasePokemon(props.id))}
                     }>Release</Button>
                     :
                     <Button type="primary" onClick={(e) => {
                         e.preventDefault();
-                        dispatch(catchPokemon(props))}
+                        dispatch(catchPokemon(props.id))}
                     }>Catch!</Button>}
             </Card>
         </Link>

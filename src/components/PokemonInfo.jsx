@@ -3,12 +3,14 @@ import {Card, Space} from "antd";
 import {useDispatch, useSelector} from 'react-redux';
 import {catchPokemon, releasePokemon} from "../redux/actions";
 import Button from "antd/es/button";
+import {useParams} from "react-router";
 
 const PokemonInfo = () => {
 
     const dispatch = useDispatch();
-    const pokemonID = useSelector(state => state.pokemons.cardID);
-    const properties = useSelector(state => state.pokemons.pokemons[pokemonID - 1]);
+    const {id} = useParams();
+    const properties = useSelector(state => state.pokemons.pokemons[id - 1]);
+
 
 
     return (
@@ -23,7 +25,7 @@ const PokemonInfo = () => {
                     style={{height: '730px', width: '475px'}}
                     cover={<img alt="pokemon" src={properties.imgURL}/>}
                 >
-                    <h4>ID: {pokemonID}, {properties.name}</h4>
+                    <h4>ID: {id}, {properties.name}</h4>
                     <p>Abilities: {properties.abilities}</p>
                     <p>Types: {properties.types}</p>
                     <p>Weight: {properties.weight}</p>
@@ -31,13 +33,13 @@ const PokemonInfo = () => {
                     {properties.isCaught ?
                         <Button type={"dashed"} onClick={(e) => {
                             e.preventDefault();
-                            dispatch(releasePokemon(pokemonID))
+                            dispatch(releasePokemon(id))
                         }
                         }>Release</Button>
                         :
                         <Button type="primary" onClick={(e) => {
                             e.preventDefault();
-                            dispatch(catchPokemon(pokemonID))
+                            dispatch(catchPokemon(id))
                         }
                         }>Catch!</Button>}
                 </Card>
