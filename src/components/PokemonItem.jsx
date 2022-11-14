@@ -1,13 +1,14 @@
 import React from "react"
 import Card from "antd/es/card";
 import Button from "antd/es/button";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import {catchPokemon, releasePokemon} from "../redux/actions";
 
 function PokemonItem(props) {
 
     const dispatch = useDispatch();
+    let navigate = useNavigate();
 
     function toUpperCase(str) {
         return str
@@ -17,7 +18,7 @@ function PokemonItem(props) {
     }
 
     return (
-        <Link to={`/info/${props.id}`} >
+        <Link to={`/info/${props.id}`} onClick={() => navigate(`/info/${props.id}`)}>
             <Card
                 hoverable
                 style={{width: 240, minHeight: '357px'}}
@@ -28,11 +29,13 @@ function PokemonItem(props) {
                 {props.isCaught ?
                     <Button type={"dashed"} onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         dispatch(releasePokemon(props.id))}
                     }>Release</Button>
                     :
                     <Button type="primary" onClick={(e) => {
                         e.preventDefault();
+                        e.stopPropagation();
                         dispatch(catchPokemon(props.id))}
                     }>Catch!</Button>}
             </Card>
