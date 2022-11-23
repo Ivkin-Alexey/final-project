@@ -36,7 +36,8 @@ function PokemonItem(props) {
                     <Button type="primary" onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        dispatch(catchPokemon(props.id))}
+                        dispatch(catchPokemon(props.id))
+                    }
                     }>Catch!</Button>}
             </Card>
         </Link>

@@ -8,10 +8,9 @@ import {useParams} from "react-router";
 const PokemonInfo = () => {
 
     const dispatch = useDispatch();
-    const {id} = useParams();
+    let {id} = useParams();
+    id = +id;
     const properties = useSelector(state => state.pokemons.pokemons[id - 1]);
-
-
 
     return (
         <Space style={{
@@ -38,8 +37,8 @@ const PokemonInfo = () => {
                         }>Release</Button>
                         :
                         <Button type="primary" onClick={(e) => {
-                            e.preventDefault();
                             dispatch(catchPokemon(id))
+                            e.preventDefault();
                         }
                         }>Catch!</Button>}
                 </Card>
