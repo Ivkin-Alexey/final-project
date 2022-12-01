@@ -10,17 +10,13 @@ function PokemonList() {
 
     let pokemons = useSelector(state => state.pokemons.pokemons)
     let isFetching = useSelector(state => state.app.fetching)
-    let url = useSelector(state => state.app.url)
-
-    useEffect(() => {
-            dispatch(fetchPokemons(url));
-    }, []);
+    let url = useSelector(state => state.app.url);
 
     useEffect(() => {
         if (isFetching) {
             dispatch(fetchPokemons(url));
         }
-    }, [isFetching,dispatch,url]);
+    }, [isFetching]);
 
     useEffect(() => {
         const scrollHandler = (e) => {

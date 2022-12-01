@@ -13,7 +13,7 @@ function App() {
 
     return (
         <Layout style={{backgroundColor: 'white'}}>
-            <Header style={{position: 'fixed', zIndex: '10', width: '100%'}}>
+            <Header style={{position: 'fixed', zIndex: '10', width: '100%', display: 'flex', justifyContent: 'center'}}>
                 <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
                     <Menu.Item key="1">
                         <Link to='/'>All pokemons</Link>
@@ -26,8 +26,8 @@ function App() {
             <Content style={{marginTop: '64px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <Routes>
                         <Route exact path="/" element={<PokemonList/>}/>
-                        <Route exact path="/caughtPokemons" element={<CaughtPokemonList/>}/>
-                        <Route exact path="/info/:id" element={<PokemonInfo/>}/>
+                        <Route path="/caughtPokemons" element={<CaughtPokemonList/>}/>
+                        <Route path="/info/:id" element={<PokemonInfo/>}/>
                     </Routes>
             </Content>
         </Layout>
