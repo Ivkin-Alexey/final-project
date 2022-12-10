@@ -19,15 +19,15 @@ function App() {
                         <Link to='/'>All pokemons</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                        <Link to='./caughtPokemons'>Caught pokemons</Link>
+                        <Link to='/caughtPokemons'>Caught pokemons</Link>
                     </Menu.Item>
                 </Menu>
             </Header>
             <Content style={{marginTop: '64px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <Routes>
                         <Route exact path="/" element={<PokemonList/>}/>
-                        <Route path="/caughtPokemons" element={<CaughtPokemonList/>}/>
-                        <Route path="/info/:id" element={<PokemonInfo/>}/>
+                        <Route exact path="/caughtPokemons" element={<CaughtPokemonList/>}/>
+                        <Route exact path="/info/:id" element={<PokemonInfo/>}/>
                     </Routes>
             </Content>
         </Layout>
