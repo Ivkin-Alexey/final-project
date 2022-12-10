@@ -6,6 +6,7 @@ import {
 } from "./types";
 
 export function fetchPokemons(url) {
+    console.log('fetch')
     return async dispatch => {
         fetch(url)
             .then(res => res.json())

@@ -13,6 +13,7 @@ function PokemonList() {
     let url = useSelector(state => state.app.url);
 
     useEffect(() => {
+        console.log(isFetching, url);
         if (isFetching) {
             dispatch(fetchPokemons(url));
         }
@@ -44,7 +45,7 @@ function PokemonList() {
                     key={index}
                     id={index + 1}
                 />
-            }) : null
+            }) : <p>fdgdfgdfgfdg</p>
             }
         </Space>
     )

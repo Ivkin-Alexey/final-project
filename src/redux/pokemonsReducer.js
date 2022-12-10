@@ -12,6 +12,7 @@ export const pokemonsReducer = (state = initialState, action) => {
         case SET_CARD_ID:
             return {...state, cardID: action.id}
         case CATCH_POKEMON:
+            console.log(typeof action.id)
             return {
                 ...state, pokemons: state.pokemons.map((el,index) => {
                     if (index+1 === action.id) {

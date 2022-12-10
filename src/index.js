@@ -1,6 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router} from "react-router-dom";
+import { createBrowserHistory } from 'history';
 import App from './App';
 import {applyMiddleware, compose, createStore} from "redux";
 import { persistStore, persistReducer } from 'redux-persist';
@@ -26,6 +27,9 @@ let store = createStore(persistedReducer, compose(
 );
 
 let persistor = persistStore(store)
+export const history = createBrowserHistory({
+    basename: process.env.PUBLIC_URL
+});
 
 const app = (
     <PersistGate loading={null} persistor={persistor}>

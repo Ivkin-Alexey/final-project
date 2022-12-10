@@ -14,12 +14,12 @@ function App() {
     return (
         <Layout style={{backgroundColor: 'white'}}>
             <Header style={{position: 'fixed', zIndex: '10', width: '100%', display: 'flex', justifyContent: 'center'}}>
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                <Menu theme="dark" mode="horizontal">
                     <Menu.Item key="1">
                         <Link to='/'>All pokemons</Link>
                     </Menu.Item>
                     <Menu.Item key="2">
-                        <Link to='/caughtPokemons'>Caught pokemons</Link>
+                        <Link to='./caughtPokemons'>Caught pokemons</Link>
                     </Menu.Item>
                 </Menu>
             </Header>
